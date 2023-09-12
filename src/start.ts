@@ -25,7 +25,17 @@ export async function startAgent(
     '-p',
     '8125:8125/udp',
     '-p',
-    '8126:8126/tcp'
+    '8126:8126/tcp',
+    '-v',
+    '/var/run/docker.sock:/var/run/docker.sock:ro',
+    '-v',
+    '/var/lib/docker/containers:/var/lib/docker/containers:ro',
+    '-v',
+    '/proc/:/host/proc/:ro',
+    '-v',
+    '/opt/datadog-agent/run:/opt/datadog-agent/run:rw',
+    '-v',
+    '/sys/fs/cgroup/:/host/sys/fs/cgroup:ro'
   ]
 
   for (const key_value of extra_env) {
