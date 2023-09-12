@@ -10,10 +10,10 @@ export async function startAgent(
   const args = [
     'run',
     '-d',
-    '--name',
-    containerName,
     '-e',
     `DD_API_KEY=${apiKey}`,
+    '--name',
+    containerName,
     '-e',
     'DD_INSIDE_CI=true',
     '-e',
