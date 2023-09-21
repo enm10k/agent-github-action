@@ -127,6 +127,8 @@ function startAgent(imageName, containerName, apiKey, site, extra_env) {
             '-v',
             '/proc/:/host/proc/:ro',
             '-v',
+            '/var/log/:/host/var/log/:ro',
+            '-v',
             '/opt/datadog-agent/run:/opt/datadog-agent/run:rw',
             '-v',
             '/sys/fs/cgroup/:/host/sys/fs/cgroup:ro'
