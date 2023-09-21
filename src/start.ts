@@ -10,6 +10,11 @@ export async function startAgent(
   const args = [
     'run',
     '-d',
+    // https://docs.datadoghq.com/logs/guide/container-agent-to-tail-logs-from-host/?tab=docker
+    '--cgroupns',
+    'host',
+    '--pid',
+    'host',
     '--name',
     containerName,
     '-e',
@@ -26,8 +31,10 @@ export async function startAgent(
     '8125:8125/udp',
     '-p',
     '8126:8126/tcp',
+    // '-v',
+    // '/etc/datadog-agent/datadog.yaml:/etc/datadog-agent/datadog.yaml:ro',
     '-v',
-    '/etc/datadog-agent/datadog.yaml:/etc/datadog-agent/datadog.yaml:ro',
+    '/etc/datadog-agent/conf.d/logs.yaml:/etc/datadog-agent/conf.d/logs.yaml:ro',
     '-v',
     '/var/run/docker.sock:/var/run/docker.sock:ro',
     '-v',
