@@ -27,6 +27,8 @@ export async function startAgent(
     '-p',
     '8126:8126/tcp',
     '-v',
+    '/etc/datadog-agent/datadog.yaml:/etc/datadog-agent/datadog.yaml:ro',
+    '-v',
     '/var/run/docker.sock:/var/run/docker.sock:ro',
     '-v',
     '/var/lib/docker/containers:/var/lib/docker/containers:ro',
